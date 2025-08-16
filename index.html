@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curso: Programación para niños: Aprende a programar con Minecraft</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Curso con tabla de contenido y reproductor de videos alojados en Google Drive." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --brand:#114d9b; --accent:#ff2a6d; --neutral:#05dae8; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .font-title { font-family: Montserrat, Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .scroll-slim::-webkit-scrollbar{height:8px;width:8px}
+    .scroll-slim::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:9999px}
+    .toc-active{background:rgba(17,77,155,.08); outline:2px solid rgba(17,77,155,.18)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;padding:.5rem .9rem;border:1px solid rgba(17,77,155,.25)}
+    .btn:hover{background:rgba(17,77,155,.06)}
+    .badge{font-size:.75rem;border-radius:9999px;padding:.15rem .5rem;border:1px solid rgba(0,0,0,.08)}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-[var(--brand)]/10 grid place-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--brand)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </div>
+        <h1 id="courseTitle" class="font-title font-extrabold text-slate-900 text-lg"></h1>
+        <span id="progressBar" class="ml-3 text-sm text-slate-600"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <aside class="lg:col-span-4 xl:col-span-3">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sticky top-[76px] max-h-[calc(100vh-96px)] overflow-auto scroll-slim">
+        <div class="flex items-center gap-2 mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--brand)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h7"/>
+          </svg>
+          <h2 class="font-title font-bold text-slate-800">Tabla de Contenido</h2>
+        </div>
+        <div id="toc" class="space-y-3"></div>
+      </div>
+    </aside>
+
+    <section class="lg:col-span-8 xl:col-span-9">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div id="playerWrap" class="bg-slate-100">
+          <div class="aspect-video w-full bg-black/80 grid place-items-center text-white">
+            <div class="text-center px-6">
+              <div class="animate-pulse mb-2">Selecciona una lección de la izquierda.</div>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 md:p-6">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span id="moduleBadge" class="badge"></span>
+            <span id="durationBadge" class="badge"></span>
+            <span id="statusBadge" class="badge"></span>
+          </div>
+          <h3 id="lessonTitle" class="font-title font-extrabold text-xl md:text-2xl text-slate-900 mb-2"></h3>
+          <p id="lessonDesc" class="text-slate-700 mb-4"></p>
+
+          <div class="flex flex-wrap gap-2">
+            <button id="prevBtn" class="btn" title="Lección anterior">← Anterior</button>
+            <button id="nextBtn" class="btn" title="Siguiente lección">Siguiente →</button>
+            <button id="markDone" class="btn" title="Marcar como completada">✅ Marcar completada</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+        <h4 class="font-title font-bold mb-2">Descripción del curso</h4>
+        <p id="courseDesc" class="text-slate-700 text-sm leading-relaxed"></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const COURSE = {"title": "Programación para niños: Aprende a programar con Minecraft", "description": "Este curso está dirigido exclusivamente para Santiago Latorre para que Aprenda a programar con Minecraft → Chavito'.", "sequential": false, "modules": [{"title": "Sección 1 · Introducción y preparación", "lessons": [{"title": "Bienvenida", "description": "", "duration": "", "driveId": "1P7C1EnpuKQQ7SNqRDcbawkRncbrWwO62", "previewUrl": "https://drive.google.com/file/d/1P7C1EnpuKQQ7SNqRDcbawkRncbrWwO62/preview"}, {"title": "Introducción, Descarga y Ejemplo", "description": "", "duration": "", "driveId": "10s09zmx2qzAfdaWGnecS0r1AAjn1FKPF", "previewUrl": "https://drive.google.com/file/d/10s09zmx2qzAfdaWGnecS0r1AAjn1FKPF/preview"}, {"title": "Cómo crear una cuenta educativa con Office 365", "description": "", "duration": "", "driveId": "1F_wSbgitxl7c4ZBpEAF7fUh0vvmHRLZ8", "previewUrl": "https://drive.google.com/file/d/1F_wSbgitxl7c4ZBpEAF7fUh0vvmHRLZ8/preview"}]}, {"title": "Sección 2 · Módulo 1", "lessons": [{"title": "Mis primeros pasos en Minecraft Education", "description": "", "duration": "", "driveId": "1RQaJQkHvv88lZ_ob8mK3WGEv3jtkJX6j", "previewUrl": "https://drive.google.com/file/d/1RQaJQkHvv88lZ_ob8mK3WGEv3jtkJX6j/preview"}, {"title": "Práctica: Mis primeros pasos en Minecraft Education", "description": "", "duration": "", "driveId": "1iEkkXVZzGmW1qXroRUl2YywZw6tI0ARd", "previewUrl": "https://drive.google.com/file/d/1iEkkXVZzGmW1qXroRUl2YywZw6tI0ARd/preview"}, {"title": "Mi primer proyecto en MakeCode", "description": "", "duration": "", "driveId": "1fyMhDu2OJpAOqBnzGf1mKG9bMl5QFZw1", "previewUrl": "https://drive.google.com/file/d/1fyMhDu2OJpAOqBnzGf1mKG9bMl5QFZw1/preview"}, {"title": "Ejemplo: Mi primer proyecto en MakeCode", "description": "", "duration": "", "driveId": "1TpRe-v0C0UMTu3zLc3VKDIhWmHBYDxVF", "previewUrl": "https://drive.google.com/file/d/1TpRe-v0C0UMTu3zLc3VKDIhWmHBYDxVF/preview"}, {"title": "Introducción a la programación en MakeCode", "description": "", "duration": "", "driveId": "1p9x_52WV9twH18A_HHN4l1mhPZQp7J3I", "previewUrl": "https://drive.google.com/file/d/1p9x_52WV9twH18A_HHN4l1mhPZQp7J3I/preview"}, {"title": "Ejemplo: Introducción a la programación en MakeCode", "description": "", "duration": "", "driveId": "1kpO-84ocLCn0Q4NIm0NKgWJEdleQb8F5", "previewUrl": "https://drive.google.com/file/d/1kpO-84ocLCn0Q4NIm0NKgWJEdleQb8F5/preview"}]}, {"title": "Sección 3 · Módulo 2 (pendiente)", "lessons": []}]};
+
+    // Helpers
+    const qs = (s, el=document)=>el.querySelector(s);
+    const qsa = (s, el=document)=>[...el.querySelectorAll(s)];
+    const playerWrap = qs("#playerWrap");
+    const toc = qs("#toc");
+    const courseTitle = qs("#courseTitle");
+    const courseDesc = qs("#courseDesc");
+    const moduleBadge = qs("#moduleBadge");
+    const durationBadge = qs("#durationBadge");
+    const statusBadge = qs("#statusBadge");
+    const lessonTitle = qs("#lessonTitle");
+    const lessonDesc = qs("#lessonDesc");
+    const prevBtn = qs("#prevBtn");
+    const nextBtn = qs("#nextBtn");
+
+    let progress = {};
+    let current = { m:0, l:0 };
+
+    const totalLessons = COURSE.modules.reduce((a,m)=>a+m.lessons.length,0);
+    const countDone = () => Object.values(progress).filter(Boolean).length;
+    const fmtKey = (m,l)=>`m${m}-l${l}`;
+
+    const renderTOC = () => {
+      toc.innerHTML = "";
+      COURSE.modules.forEach((mod, mIdx) => {
+        const box = document.createElement("div");
+        box.className = "border border-slate-200 rounded-xl overflow-hidden mb-2";
+        const head = document.createElement("div");
+        head.className = "bg-slate-100/60 px-4 py-3 font-semibold";
+        head.textContent = mod.title;
+        const list = document.createElement("div");
+        list.className = "divide-y divide-slate-200";
+        mod.lessons.forEach((les, lIdx) => {
+          const b = document.createElement("button");
+          b.className = "w-full text-left px-4 py-3 hover:bg-slate-50 flex items-center gap-3";
+          b.dataset.m = mIdx; b.dataset.l = lIdx;
+          b.innerHTML = `<span class="w-5 h-5 rounded-full border grid place-items-center text-slate-400"></span>
+                         <div class="flex-1"><div class="text-sm font-medium">${les.title}</div></div>`;
+          list.appendChild(b);
+        });
+        box.appendChild(head); box.appendChild(list); toc.appendChild(box);
+      });
+
+      qsa("[data-m]").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          current = { m: Number(btn.dataset.m), l: Number(btn.dataset.l) };
+          renderLesson();
+          qsa("[data-m]").forEach(n=>n.classList.remove("toc-active"));
+          btn.classList.add("toc-active");
+        });
+      });
+    };
+
+    const renderLesson = () => {
+      const mod = COURSE.modules[current.m];
+      const les = mod.lessons[current.l];
+      const url = les.previewUrl || (les.driveId ? `https://drive.google.com/file/d/${les.driveId}/preview` : "");
+      playerWrap.innerHTML = url ? `<iframe class="w-full aspect-video" src="${url}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`
+                                 : `<div class="aspect-video w-full bg-slate-200 grid place-items-center text-slate-500">Sin URL de video</div>`;
+      moduleBadge.textContent = mod.title;
+      durationBadge.textContent = les.duration ? `Duración: ${les.duration}` : "Duración: n/d";
+      statusBadge.textContent = progress[fmtKey(current.m,current.l)] ? "Completada" : "Pendiente";
+      lessonTitle.textContent = les.title || "";
+      lessonDesc.textContent = les.description || "";
+      prevBtn.disabled = (current.m === 0 && current.l === 0);
+      nextBtn.disabled = (current.m === COURSE.modules.length - 1 && current.l === COURSE.modules[current.m].lessons.length - 1);
+    };
+
+    prevBtn.addEventListener("click", ()=>{
+      if (current.l > 0) current.l--;
+      else if (current.m > 0) { current.m--; current.l = COURSE.modules[current.m].lessons.length - 1; }
+      renderLesson();
+    });
+    nextBtn.addEventListener("click", ()=>{
+      if (current.l < COURSE.modules[current.m].lessons.length - 1) current.l++;
+      else if (current.m < COURSE.modules.length - 1) { current.m++; current.l = 0; }
+      renderLesson();
+    });
+    qs("#markDone").addEventListener("click", ()=>{
+      const key = fmtKey(current.m,current.l);
+      progress[key] = !progress[key];
+      statusBadge.textContent = progress[key] ? "Completada" : "Pendiente";
+    });
+
+    (function init(){
+      courseTitle.textContent = COURSE.title;
+      courseDesc.textContent = COURSE.description;
+      renderTOC();
+      if (COURSE.modules[0].lessons.length) {
+        current = { m:0, l:0 };
+        const firstBtn = toc.querySelector("[data-m='0'][data-l='0']");
+        if (firstBtn) firstBtn.classList.add("toc-active");
+        renderLesson();
+      }
+    })();
+  </script>
+</body>
+</html>
